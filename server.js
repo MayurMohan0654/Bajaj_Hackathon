@@ -120,11 +120,11 @@ app.post('/bfhl', async (req, res) => {
             });
         }
         
-        const key = keys[0].toLowerCase();
+        const key = keys[0];
         const value = body[key];
         let data;
         
-        switch (key) {
+        switch (key.toLowerCase()) {
             case 'fibonacci':
                 if (typeof value !== 'number' || value < 0 || !Number.isInteger(value)) {
                     return res.status(400).json({
