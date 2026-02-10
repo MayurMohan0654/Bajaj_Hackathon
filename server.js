@@ -120,8 +120,9 @@ app.post('/bfhl', async (req, res) => {
             });
         }
         
-        const key = keys[0];
-        const value = body[key];
+        const originalKey = keys[0];
+        const key = originalKey.toLowerCase(); // Convert to lowercase for case-insensitive matching
+        const value = body[originalKey];
         let data;
         
         switch (key) {
@@ -196,7 +197,7 @@ app.post('/bfhl', async (req, res) => {
             default:
                 return res.status(400).json({
                     is_success: false,
-                    error: `Unknown key: ${key}. Valid keys are: fibonacci, prime, lcm, hcf, AI`
+                    error: `Unknown key: ${originalKey}. Valid keys are: fibonacci, prime, lcm, hcf, AI (case-insensitive)`
                 });
         }
         
