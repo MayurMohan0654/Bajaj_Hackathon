@@ -8,7 +8,7 @@ const PORT = process.env.PORT;
 
 app.use(express.json());
 
-const mail = "mayur0654@chitkara.edu.in";
+const mail = "mayur0654.be23@chitkara.edu.in";
 const api_key = process.env.API_KEY;
 
 
@@ -102,7 +102,6 @@ app.post('/bfhl', async (req, res) => {
     try {
         const body = req.body;
         
-        // Check if body is empty or not an object
         if (!body || typeof body !== 'object' || Array.isArray(body)) {
             return res.status(400).json({
                 is_success: false,
@@ -112,7 +111,6 @@ app.post('/bfhl', async (req, res) => {
         
         const keys = Object.keys(body);
         
-        // Validate exactly one key
         if (keys.length !== 1) {
             return res.status(400).json({
                 is_success: false,
@@ -121,7 +119,7 @@ app.post('/bfhl', async (req, res) => {
         }
         
         const originalKey = keys[0];
-        const key = originalKey.toLowerCase(); // Convert to lowercase for case-insensitive matching
+        const key = originalKey.toLowerCase();
         const value = body[originalKey];
         let data;
         
@@ -216,7 +214,7 @@ app.post('/bfhl', async (req, res) => {
     }
 });
 
-// GET /health endpoint
+
 app.get('/health', (req, res) => {
     res.json({
         is_success: true,
