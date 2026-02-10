@@ -124,7 +124,7 @@ app.post('/bfhl', async (req, res) => {
         const value = body[key];
         let data;
         
-        switch (key.toLowerCase()) {
+        switch (key) {
             case 'fibonacci':
                 if (typeof value !== 'number' || value < 0 || !Number.isInteger(value)) {
                     return res.status(400).json({
